@@ -14,6 +14,10 @@ function getComputerChoice() {
     return choice;
 }
 
+function capitalize(word) {
+    return word.charAt(0).toUpperCase() + word.substring(1).toLowerCase();
+}
+
 function playRound(playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase();
     let roundOutcome;
@@ -35,17 +39,13 @@ function playRound(playerSelection, computerSelection) {
 
     switch (roundOutcome) {
         case "win":
-            return `You win! ${playerSelection} beats ${computerSelection}!`;
+            return `You win! ${capitalize(playerSelection)} beats ${computerSelection}!`;
             break;
         case "lose":
-            return `You lose! ${computerSelection} beats ${playerSelection}`;
+            return `You lose! ${capitalize(computerSelection)} beats ${playerSelection}`;
             break;
         case "draw":
-            return `It's a tie! ${playerSelection} draws against ${computerSelection}`;
-            break;
-        case "explosion":
-            return `You messed up! Player: ${playerSelection}, computer: ${computerSelection}`;
-            break;
+            return `It's a tie! ${capitalize(playerSelection)} draws against ${computerSelection}`;
     }
 }
 
