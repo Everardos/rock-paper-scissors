@@ -14,11 +14,22 @@ function getComputerChoice() {
     return choice;
 }
 
+function getPlayerChoice() {
+    let choice = prompt("Type rock, paper, or scissors: ");
+
+    while (choice.toLowerCase() != "rock" && choice.toLowerCase() != "paper" && choice.toLowerCase() != "scissors") {
+        choice = prompt("Sorry, invalid input! Type rock, paper, or scissors: ");
+    }
+
+    return choice;
+}
+
+
 function capitalize(word) {
     return word.charAt(0).toUpperCase() + word.substring(1).toLowerCase();
 }
 
-function playRound(playerSelection, computerSelection) {
+function evaluateRound(playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase();
     let roundOutcome;
     if (playerSelection === computerSelection) {
@@ -36,7 +47,10 @@ function playRound(playerSelection, computerSelection) {
     } else if (playerSelection === "scissors" && computerSelection === "paper") {
         roundOutcome = "win";
     }
+    return roundOutcome;
+}
 
+function playRound(playerSelection, computerSelection, roundOutcome) {
     switch (roundOutcome) {
         case "win":
             return `You win! ${capitalize(playerSelection)} beats ${computerSelection}!`;
@@ -49,6 +63,29 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-/*
 
-*/
+function playGame() {
+    let score = 0;
+    for (let round = 0; round <5; round++) {
+        let playerSelection = getPlayerChoice();
+        let computerSelection = getComputerChoice();
+        let roundOutcome = evaluateRound(playerSelection, computerSelection);
+        let round = playRound(playerSelection, computerSelection, roundOutcome);
+        if (roundOutcome === "win") {
+            score++;
+        } else if (roundOutcome === "lose") {
+            score--;
+        }
+        alert(round);
+    }
+    if (score > 0) {
+        alert("You win the game!");
+    } else if (score < 0) {
+        alert("You lose the game!");
+    } else {
+        alert("The game was a tie.");
+    }
+    console.log(score)
+}
+
+playGame()
