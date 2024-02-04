@@ -30,25 +30,15 @@ function capitalize(word) {
 }
 
 function evaluateRound(playerSelection, computerSelection) {
-    playerSelection = playerSelection.toLowerCase();
-    let roundOutcome;
-    if (playerSelection === computerSelection) {
-        roundOutcome = "draw";
-    } else if (playerSelection === "rock" && computerSelection === "paper") {
-        roundOutcome = "lose";
-    } else if (playerSelection === "rock" && computerSelection === "scissors") {
-        roundOutcome = "win";
-    } else if (playerSelection === "paper" && computerSelection === "rock") {
-        roundOutcome = "win";
-    } else if (playerSelection === "paper" && computerSelection === "scissors") {
-        roundOutcome = "lose";
-    } else if (playerSelection === "scissors" && computerSelection === "rock") {
-        roundOutcome = "lose";
-    } else if (playerSelection === "scissors" && computerSelection === "paper") {
-        roundOutcome = "win";
+    if (playerSelection === computerSelection) return "draw";
+    const winConditions = ["rock scissors", "scissors paper", "paper rock"];
+    if (winConditions.includes(playerSelection + " " + computerSelection)) {
+        return "win";
+    } else {
+        return "lose";
     }
-    return roundOutcome;
 }
+
 
 function playRound(playerSelection, computerSelection, roundOutcome) {
     switch (roundOutcome) {
