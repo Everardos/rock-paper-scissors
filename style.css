@@ -1,0 +1,49 @@
+.game-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+#computer-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+#player-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.player-button {
+    width: 200px;
+    height: 200px;
+    border-radius: 20px;
+}
+
+.computer-button {
+    width: 200px;
+    height: 200px;
+    border-radius: 20px;
+}
+
+.rock {
+    background-color: lightcoral;
+}
+
+.paper {
+    background-color: lightblue;
+}
+
+.scissors {
+    background-color: lightgreen;
+}
