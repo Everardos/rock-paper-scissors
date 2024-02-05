@@ -29,10 +29,10 @@ function capitalize(word) {
     return word.charAt(0).toUpperCase() + word.substring(1).toLowerCase();
 }
 
-function evaluateRound(playerSelection, computerSelection) {
-    if (playerSelection === computerSelection) return "draw";
+function evaluateRound(playerChoice, computerChoice) {
+    if (playerChoice === computerChoice) return "draw";
     const winConditions = ["rock scissors", "scissors paper", "paper rock"];
-    if (winConditions.includes(playerSelection + " " + computerSelection)) {
+    if (winConditions.includes(playerChoice + " " + computerChoice)) {
         return "win";
     } else {
         return "lose";
@@ -40,16 +40,16 @@ function evaluateRound(playerSelection, computerSelection) {
 }
 
 
-function playRound(playerSelection, computerSelection, roundOutcome) {
+function playRound(playerChoice, computerChoice, roundOutcome) {
     switch (roundOutcome) {
         case "win":
-            return `You win! ${capitalize(playerSelection)} beats ${computerSelection}!`;
+            return `You win! ${capitalize(playerChoice)} beats ${computerChoice}!`;
             break;
         case "lose":
-            return `You lose! ${capitalize(computerSelection)} beats ${playerSelection}`;
+            return `You lose! ${capitalize(computerChoice)} beats ${playerChoice}`;
             break;
         case "draw":
-            return `It's a tie! ${capitalize(playerSelection)} draws against ${computerSelection}`;
+            return `It's a tie! ${capitalize(playerChoice)} draws against ${computerChoice}`;
     }
 }
 
@@ -57,10 +57,10 @@ function playRound(playerSelection, computerSelection, roundOutcome) {
 function playGame() {
     let score = 0;
     for (let round = 0; round <5; round++) {
-        let playerSelection = getPlayerChoice();
-        let computerSelection = getComputerChoice();
-        let roundOutcome = evaluateRound(playerSelection, computerSelection);
-        let round = playRound(playerSelection, computerSelection, roundOutcome);
+        let playerChoice = getPlayerChoice();
+        let computerChoice = getComputerChoice();
+        let roundOutcome = evaluateRound(playerChoice, computerChoice);
+        let round = playRound(playerChoice, computerChoice, roundOutcome);
         if (roundOutcome === "win") {
             score++;
         } else if (roundOutcome === "lose") {
