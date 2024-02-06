@@ -28,12 +28,19 @@
     width: 200px;
     height: 200px;
     border-radius: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
 }
 
 .computer-button {
     width: 200px;
     height: 200px;
     border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 12px;
 }
 
 .rock {
@@ -46,4 +53,8 @@
 
 .scissors {
     background-color: lightgreen;
+}
+
+.greyed {
+    background-color: grey;
 }
