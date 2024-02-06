@@ -21,16 +21,6 @@ function getComputerChoice() {
     return choice;
 }
 
-function getPlayerChoice() {
-    let choice = prompt("Type rock, paper, or scissors: ");
-
-    while (choice.toLowerCase() != "rock" && choice.toLowerCase() != "paper" && choice.toLowerCase() != "scissors") {
-        choice = prompt("Sorry, invalid input! Type rock, paper, or scissors: ");
-    }
-
-    return choice;
-}
-
 
 function capitalize(word) {
     return word.charAt(0).toUpperCase() + word.substring(1).toLowerCase();
@@ -47,7 +37,8 @@ function evaluateRound(playerChoice, computerChoice) {
 }
 
 
-function playRound(playerChoice, computerChoice, roundOutcome) {
+function playRound(playerChoice, computerChoice) {
+    let roundOutcome = evaluateRound(playerChoice, computerChoice);
     switch (roundOutcome) {
         case "win":
             return `You win! ${capitalize(playerChoice)} beats ${computerChoice}!`;
@@ -60,29 +51,15 @@ function playRound(playerChoice, computerChoice, roundOutcome) {
     }
 }
 
+playerRock.addEventListener("click", function () {
+    console.log(playRound("rock", getComputerChoice()))
+})
 
-function playGame() {
-    let score = 0;
-    for (let round = 0; round <5; round++) {
-        let playerChoice = getPlayerChoice();
-        let computerChoice = getComputerChoice();
-        let roundOutcome = evaluateRound(playerChoice, computerChoice);
-        let round = playRound(playerChoice, computerChoice, roundOutcome);
-        if (roundOutcome === "win") {
-            score++;
-        } else if (roundOutcome === "lose") {
-            score--;
-        }
-        alert(round);
-    }
-    if (score > 0) {
-        alert("You win the game!");
-    } else if (score < 0) {
-        alert("You lose the game!");
-    } else {
-        alert("The game was a tie.");
-    }
-    console.log(score)
-}
+playerPaper.addEventListener("click", function () {
+    console.log(playRound("paper", getComputerChoice()))
+})
 
-playGame()
+playerScissors.addEventListener("click", function () {
+    console.log(playRound("scissors", getComputerChoice()))
+})
+
