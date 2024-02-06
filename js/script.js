@@ -1,3 +1,10 @@
+const playerRock = document.querySelector(".player-button.rock");
+const playerPaper = document.querySelector(".player-button.paper");
+const playerScissors = document.querySelector(".player-button.scissors");
+const computerRock = document.querySelector(".computer-button.rock");
+const computerPaper = document.querySelector(".computer-button.paper");
+const computerScissors = document.querySelector(".computer-button.scissors");
+
 function getComputerChoice() {
     let choice;
     switch (Math.floor(Math.random() * 3 + 1)) {
