@@ -4,6 +4,7 @@ const playerScissors = document.querySelector(".player-button.scissors");
 const computerRock = document.querySelector(".computer-button.rock");
 const computerPaper = document.querySelector(".computer-button.paper");
 const computerScissors = document.querySelector(".computer-button.scissors");
+const gameScore = document.querySelector(".game-score");
 
 let score = 0;
 
@@ -59,18 +60,22 @@ function playRound(playerChoice, computerChoice) {
     }
 }
 
+function updateScore() {
+    gameScore.textContent = score;
+}
+
 playerRock.addEventListener("click", function () {
-    console.log(playRound("rock", getComputerChoice()))
-    console.log(score)
+    console.log(playRound("rock", getComputerChoice()));
+    updateScore();
 })
 
 playerPaper.addEventListener("click", function () {
-    console.log(playRound("paper", getComputerChoice()))
-    console.log(score)
+    console.log(playRound("paper", getComputerChoice()));
+    updateScore();
 })
 
 playerScissors.addEventListener("click", function () {
-    console.log(playRound("scissors", getComputerChoice()))
-    console.log(score)
+    console.log(playRound("scissors", getComputerChoice()));
+    updateScore();
 })
 
