@@ -58,3 +58,7 @@
 .greyed {
     background-color: grey;
 }
+
+.results {
+    text-align: center;
+}
