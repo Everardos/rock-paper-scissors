@@ -5,6 +5,7 @@ const computerRock = document.querySelector(".computer-button.rock");
 const computerPaper = document.querySelector(".computer-button.paper");
 const computerScissors = document.querySelector(".computer-button.scissors");
 const gameScore = document.querySelector(".game-score");
+const results = document.querySelector(".results");
 
 let score = 0;
 
@@ -51,12 +52,15 @@ function playRound(playerChoice, computerChoice) {
     switch (roundOutcome) {
         case "win":
             score++;
-            return `You win! ${capitalize(playerChoice)} beats ${computerChoice}!`;
+            results.textContent = `You win! ${capitalize(playerChoice)} beats ${computerChoice}!`;
+            break;
         case "lose":
             score--;
-            return `You lose! ${capitalize(computerChoice)} beats ${playerChoice}`;
+            results.textContent = `You lose! ${capitalize(computerChoice)} beats ${playerChoice}`;
+            break;
         case "draw":
-            return `It's a tie! ${capitalize(playerChoice)} draws against ${computerChoice}`;
+            results.textContent = `It's a tie! ${capitalize(playerChoice)} draws against ${computerChoice}`;
+            break;
     }
 }
 
