@@ -5,6 +5,8 @@ const computerRock = document.querySelector(".computer-button.rock");
 const computerPaper = document.querySelector(".computer-button.paper");
 const computerScissors = document.querySelector(".computer-button.scissors");
 
+let score = 0;
+
 function getComputerChoice() {
     let choice;
     switch (Math.floor(Math.random() * 3 + 1)) {
@@ -41,11 +43,11 @@ function playRound(playerChoice, computerChoice) {
     let roundOutcome = evaluateRound(playerChoice, computerChoice);
     switch (roundOutcome) {
         case "win":
+            score++;
             return `You win! ${capitalize(playerChoice)} beats ${computerChoice}!`;
-            break;
         case "lose":
+            score--;
             return `You lose! ${capitalize(computerChoice)} beats ${playerChoice}`;
-            break;
         case "draw":
             return `It's a tie! ${capitalize(playerChoice)} draws against ${computerChoice}`;
     }
@@ -53,13 +55,16 @@ function playRound(playerChoice, computerChoice) {
 
 playerRock.addEventListener("click", function () {
     console.log(playRound("rock", getComputerChoice()))
+    console.log(score)
 })
 
 playerPaper.addEventListener("click", function () {
     console.log(playRound("paper", getComputerChoice()))
+    console.log(score)
 })
 
 playerScissors.addEventListener("click", function () {
     console.log(playRound("scissors", getComputerChoice()))
+    console.log(score)
 })
 
