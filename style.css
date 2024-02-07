@@ -61,6 +61,7 @@ body {
 
 .results {
     text-align: center;
+    height: 32px;
 }
 
 .game-score {
