@@ -30,7 +30,7 @@ function getComputerChoice() {
             choice = "scissors";
             break;
     }
-    return "rock";
+    return choice;
 }
 
 
