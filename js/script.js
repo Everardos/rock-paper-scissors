@@ -1,9 +1,9 @@
-const playerRock = document.querySelector(".player-button.rock");
-const playerPaper = document.querySelector(".player-button.paper");
-const playerScissors = document.querySelector(".player-button.scissors");
-const computerRock = document.querySelector(".computer-button.rock");
-const computerPaper = document.querySelector(".computer-button.paper");
-const computerScissors = document.querySelector(".computer-button.scissors");
+const playerRock = document.querySelector("#player-rock");
+const playerPaper = document.querySelector("#player-paper");
+const playerScissors = document.querySelector("#player-scissors");
+const computerRock = document.querySelector("#computer-rock");
+const computerPaper = document.querySelector("#computer-paper");
+const computerScissors = document.querySelector("#computer-scissors");
 const gameScore = document.querySelector(".game-score");
 const results = document.querySelector(".results");
 
@@ -88,20 +88,35 @@ function updateScore() {
     
 }
 
+function resetGreyed() {
+    playerRock.classList.add("greyed");
+    playerPaper.classList.add("greyed");
+    playerScissors.classList.add("greyed");
+}
 
 function playRock() {
+    resetGreyed();
+
     console.log(playRound("rock", getComputerChoice()));
     updateScore();
+    playerRock.classList.remove("greyed");
 }
 
 function playPaper() {
+    resetGreyed();
+
     console.log(playRound("paper", getComputerChoice()));
     updateScore();
+    playerPaper.classList.remove("greyed");
 }
 
 function playScissors() {
+    resetGreyed();
+
     console.log(playRound("scissors", getComputerChoice()));
     updateScore();
+
+    playerScissors.classList.remove("greyed");
 }
 
 playerRock.addEventListener("click", playRock);
