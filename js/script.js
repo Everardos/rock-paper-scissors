@@ -4,10 +4,12 @@ const playerScissors = document.querySelector("#player-scissors");
 const computerRock = document.querySelector("#computer-rock");
 const computerPaper = document.querySelector("#computer-paper");
 const computerScissors = document.querySelector("#computer-scissors");
-const gameScore = document.querySelector(".game-score");
+const computerScoreDisplay = document.querySelector("#computer-score");
+const playerScoreDisplay = document.querySelector("#player-score");
 const results = document.querySelector(".results");
 
-let score = 0;
+let playerScore = 0;
+let computerScore = 0;
 
 function getComputerChoice() {
     let choice;
@@ -51,11 +53,11 @@ function playRound(playerChoice, computerChoice) {
     let roundOutcome = evaluateRound(playerChoice, computerChoice);
     switch (roundOutcome) {
         case "win":
-            score++;
+            playerScore++;
             results.textContent = `You win! ${capitalize(playerChoice)} beats ${computerChoice}!`;
             break;
         case "lose":
-            score--;
+            computerScore++;
             results.textContent = `You lose! ${capitalize(computerChoice)} beats ${playerChoice}`;
             break;
         case "draw":
@@ -68,14 +70,12 @@ let gameEnd = false;
 
 
 function updateScore() {
-    if (score < 5 && score > -5) {
-        gameScore.textContent = score;
-    } else if (score === -5) {
-        gameScore.textContent = score;
+    playerScoreDisplay.textContent = "SCORE: " + playerScore;
+    computerScoreDisplay.textContent = "SCORE: " + computerScore;
+    if (computerScore === 5) {
         results.textContent = "Game over! Computer wins."
         gameEnd = true;
-    } else {
-        gameScore.textContent = score;
+    } else if (playerScore === 5) {
         results.textContent = "Congratulations! You won!"
         gameEnd = true;
     }
