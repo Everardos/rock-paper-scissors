@@ -28,7 +28,7 @@ function getComputerChoice() {
             choice = "scissors";
             break;
     }
-    return choice;
+    return "rock";
 }
 
 
@@ -64,22 +64,47 @@ function playRound(playerChoice, computerChoice) {
     }
 }
 
+let gameEnd = false;
+
+
 function updateScore() {
-    gameScore.textContent = score;
+    if (score < 5 && score > -5) {
+        gameScore.textContent = score;
+    } else if (score === -5) {
+        gameScore.textContent = score;
+        results.textContent = "Game over! Computer wins."
+        gameEnd = true;
+    } else {
+        gameScore.textContent = score;
+        results.textContent = "Congratulations! You won!"
+        gameEnd = true;
+    }
+
+    if (gameEnd === true) {
+        playerRock.removeEventListener("click", playRock);
+        playerPaper.removeEventListener("click", playPaper);
+        playerScissors.removeEventListener("click", playScissors);
+    }
+    
 }
 
-playerRock.addEventListener("click", function () {
+
+function playRock() {
     console.log(playRound("rock", getComputerChoice()));
     updateScore();
-})
+}
 
-playerPaper.addEventListener("click", function () {
+function playPaper() {
     console.log(playRound("paper", getComputerChoice()));
     updateScore();
-})
+}
 
-playerScissors.addEventListener("click", function () {
+function playScissors() {
     console.log(playRound("scissors", getComputerChoice()));
     updateScore();
-})
+}
+
+playerRock.addEventListener("click", playRock);
+playerPaper.addEventListener("click", playPaper);
+playerScissors.addEventListener("click", playScissors);
 
