@@ -11,6 +11,76 @@ const results = document.querySelector(".results");
 let playerScore = 0;
 let computerScore = 0;
 
+const typeWins = {
+    "normal": [],
+    "fire": ["grass", "ice", "bug"],
+    "water": ["fire", "ground", "rock"],
+    "electric": ["water", "flying"],
+    "grass": ["water", "ground", "rock"],
+    "ice": ["grass", "ground", "dragon"],
+    "fighting": ["normal", "ice", "rock"],
+    "poison": ["grass", "bug"],
+    "ground": ["fire", "electric", "poison", "rock"],
+    "flying": ["grass", "fighting", "bug"],
+    "psychic": ["fighting", "poison"],
+    "bug": ["grass", "poison", "psychic"],
+    "rock": ["fire", "ice", "flying", "bug"],
+    "ghost": ["ghost"],
+    "dragon": ["dragon"],
+}
+
+const typeLosses = {
+    "normal": ["rock"],
+    "fire": ["fire", "water", "rock", "dragon"],
+    "water": ["water", "grass", "dragon"],
+    "electric": ["electric", "grass", "dragon"],
+    "grass": ["fire", "grass", "poison", "flying", "bug", "dragon"],
+    "ice": ["water", "ice"],
+    "fighting": ["poison", "flying", "psychic", "bug"],
+    "poison": ["poison", "ground", "rock", "ghost"],
+    "ground": ["grass", "bug"],
+    "flying": ["electric", "rock"],
+    "psychic": ["psychic"],
+    "bug": ["fire", "fighting", "flying", "ghost"],
+    "rock": ["fighting", "ground"],
+    "ghost": [],
+    "dragon": [],
+}
+
+const typeNoEffect = {
+    "normal": ["ghost"],
+    "fire": [],
+    "water": [],
+    "electric": ["ground"],
+    "grass": [],
+    "ice": [],
+    "fighting": ["ghost"],
+    "poison": [],
+    "ground": ["flying"],
+    "flying": [],
+    "psychic": [],
+    "bug": [],
+    "rock": [],
+    "ghost": [],
+    "dragon": [],
+}
+
+let typesInPlay = ["fire", "water", "grass"]
+let typesNotInPlay = [
+    "electric", 
+    "ground", 
+    "flying",
+    "bug",
+    "normal",
+    "rock",
+    "fighting",
+    "poison",
+    "ghost",
+    "psychic",
+    "ice",
+    "dragon"
+]
+
 function getComputerChoice() {
     let choice;
     computerRock.classList.add("greyed");
