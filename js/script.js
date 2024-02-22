@@ -81,26 +81,13 @@ let typesNotInPlay = [
     "dragon"
 ]
 
+function getRandomIndex(arrayLength) {
+    // Return int from 0 to the max index of the array
+    return Math.floor(Math.random() * arrayLength)
+}
+
 function getComputerChoice() {
-    let choice;
-    computerRock.classList.add("greyed");
-    computerPaper.classList.add("greyed");
-    computerScissors.classList.add("greyed");
-    switch (Math.floor(Math.random() * 3 + 1)) {
-        case 1:
-            computerRock.classList.remove("greyed");
-            choice = "rock";
-            break;
-        case 2:
-            computerPaper.classList.remove("greyed");
-            choice = "paper";
-            break;
-        case 3:
-            computerScissors.classList.remove("greyed");
-            choice = "scissors";
-            break;
-    }
-    return choice;
+    return typesInPlay[getRandomIndex(typesInPlay.length)]
 }
 
 
