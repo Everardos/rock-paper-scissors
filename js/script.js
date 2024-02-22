@@ -8,8 +8,8 @@ const computerScoreDisplay = document.querySelector("#computer-score");
 const playerScoreDisplay = document.querySelector("#player-score");
 const results = document.querySelector(".results");
 
-let playerScore = 0;
-let computerScore = 0;
+let playerHP = 20;
+let computerHP = 20;
 
 const typeWins = {
     "normal": [],
@@ -95,14 +95,40 @@ function capitalize(word) {
     return word.charAt(0).toUpperCase() + word.substring(1).toLowerCase();
 }
 
-function evaluateRound(playerChoice, computerChoice) {
-    if (playerChoice === computerChoice) return "draw";
-    const winConditions = ["rock scissors", "scissors paper", "paper rock"];
-    if (winConditions.includes(playerChoice + " " + computerChoice)) {
-        return "win";
-    } else {
-        return "lose";
+function getDamage(attackerChoice, defenderChoice) {
+    let damage = 2;
+    if (typeWins[attackerChoice].includes(defenderChoice)) {
+        damage = 4;
+    } else if (typeLosses[attackerChoice].includes(defenderChoice)) {
+        damage = 1;
+    } else if (typeNoEffect[attackerChoice].includes(defenderChoice)) {
+        damage = 0
     }
+    return damage;
+}
+
+function getAttackMessage(player, choice) {
+    return `${capitalize(player)} used ${choice}.`
+}
+
+function getRoundOutcomeMessage(damageDifferential, opponentChoice) {
+    switch (damageDifferential) {
+        case 0:
+            return `It didn't affect ${opponentChoice}!`;
+        case 1:
+            return "It's not very effective";
+        case 2:
+            return "";
+        case 4:
+            return "It's super effective!"
+    }
+}
+
+function evaluateRound(playerChoice, computerChoice) {
+    const damageToPlayer = getDamage(computerChoice, playerChoice);
+    const damageToComputer = getDamage(playerChoice, computerChoice);
+    playerHP -= damageToPlayer;
+    computerHP -= damageToComputer;
 }
 
 
